@@ -260,5 +260,4 @@ client.urgent           #C99700 #FFBF00 #ffffff #FFBF00
 bar {
     position bottom
     status_command i3status
-    tray_output primary
 }
