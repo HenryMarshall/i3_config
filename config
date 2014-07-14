@@ -124,18 +124,17 @@ bindsym $mod+F3 move scratchpad
 bindsym $mod+F4 scratchpad show
 
 # Retrieve konsole
-bindsym $mod+F5 [instance="scratchKonsole"] scratchpad show
+# bindsym $mod+F5 [instance="scratchKonsole"] scratchpad show
 
 # Make a new konsole with instance "scratchKonsole" because you closed it like an idiot
-bindsym $mod+Shift+F5 exec konsole -name scratchKonsole
+# bindsym $mod+Shift+F5 exec konsole -name scratchKonsole
 
 
 
 ###### SCREENS ######
 
-# must use xinerama for unknown reasons. my nvidia drivers 331.20 should
-# support randr, but benefits are minimal as this machine will never hot-swap
-# displays
+# must use xinerama for unknown reasons. my nvidia drivers 331.20 should support
+# randr, but benefits are minimal as this machine will never hot-swap displays
 force_xinerama yes
 
 # 20140712 - quad head
@@ -161,16 +160,13 @@ bindsym $mod+shift+V move container to output xinerama-3
 
 ###### WORKSPACES ######
 
-# navigating to a workspace you're already on goes to previous
-workspace_auto_back_and_forth yes
-
 # focus adjacent workspace on screen
 bindsym $mod+q workspace prev_on_output
 bindsym $mod+p workspace next_on_output
 
 # flop workspaces horizontally between screens
 # doesn't work atm; will effort when i move to quad head
-# bindsym $mod+k exec /home/henry/.i3/switch.py
+# bindsym $mod+F5 exec /home/henry/.i3/switch.py
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -183,6 +179,7 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym $mod+h workspace w:chr; workspace w:ff; workspace w:sub; workspace w:ref
 bindsym $mod+n workspace w:chr
 bindsym $mod+e workspace w:ff
 bindsym $mod+i workspace w:sub
