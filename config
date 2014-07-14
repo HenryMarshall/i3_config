@@ -139,22 +139,22 @@ bindsym $mod+Shift+F5 exec konsole -name scratchKonsole
 force_xinerama yes
 
 # 20140712 - quad head
-#   screen 0: DVI-I-2
-#   screen 1: DVI-I-3
-#   screen 2: DVI-I-1
-#   screen 3: VGA-0
+#   DVI-I-2: xinerama-0
+#   DVI-I-3: xinerama-1
+#   DVI-I-1: xinerama-2
+#   VGA-0:   xinerama-3
 
 # move WORKSPACES to screens
-bindsym $mod+z move workspace to output DVI-I-2
-bindsym $mod+x move workspace to output DVI-I-3
-bindsym $mod+c move workspace to output DVI-I-1
-bindsym $mod+v move workspace to output VGA-0
+bindsym $mod+z move workspace to output xinerama-0
+bindsym $mod+x move workspace to output xinerama-1
+bindsym $mod+c move workspace to output xinerama-2
+bindsym $mod+v move workspace to output xinerama-3
 
 # move CLIENTS to screens
-bindsym $mod+shift+Z move container to output DVI-I-2
-bindsym $mod+shift+X move container to output DVI-I-3
-bindsym $mod+shift+C move container to output DVI-I-1
-bindsym $mod+shift+V move container to output VGA-0
+bindsym $mod+shift+Z move container to output xinerama-0
+bindsym $mod+shift+X move container to output xinerama-1
+bindsym $mod+shift+C move container to output xinerama-2
+bindsym $mod+shift+V move container to output xinerama-3
 
 # for moving specific workspaces to specific screens see: workspaces
 
