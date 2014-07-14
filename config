@@ -25,9 +25,9 @@ exec konsole -name scratchKonsole; [instance="scratchKonsole"] move scratchpad
 bindsym $mod+Shift+Delete kill
 
 # start k4-dmenu-desktop (a better program launcher)
-bindsym $mod+BackSpace exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -l 20"
+# bindsym $mod+BackSpace exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -l 20"
 # old and busted dmenu
-# bindsym $mod+BackSpace exec --no-startup-id dmenu_run
+bindsym $mod+BackSpace exec --no-startup-id dmenu_run
 
 # launch (work) firefox
 bindsym $mod+Return exec firefox
@@ -133,17 +133,28 @@ bindsym $mod+Shift+F5 exec konsole -name scratchKonsole
 
 ###### SCREENS ######
 
-# 2014-03-22 -- In my bedroom on Crescent Dr
-# DVI-I-1 == left screen
-# DVI-I-2 == right screen
+# must use xinerama for unknown reasons. my nvidia drivers 331.20 should
+# support randr, but benefits are minimal as this machine will never hot-swap
+# displays
+force_xinerama yes
+
+# 20140712 - quad head
+#   screen 0: DVI-I-2
+#   screen 1: DVI-I-3
+#   screen 2: DVI-I-1
+#   screen 3: VGA-0
 
 # move WORKSPACES to screens
-bindsym $mod+z move workspace to output DVI-I-1
-bindsym $mod+x move workspace to output DVI-I-2
+bindsym $mod+z move workspace to output DVI-I-2
+bindsym $mod+x move workspace to output DVI-I-3
+bindsym $mod+c move workspace to output DVI-I-1
+bindsym $mod+v move workspace to output VGA-0
 
 # move CLIENTS to screens
-bindsym $mod+shift+Z move container to output DVI-I-1
-bindsym $mod+shift+X move container to output DVI-I-2
+bindsym $mod+shift+Z move container to output DVI-I-2
+bindsym $mod+shift+X move container to output DVI-I-3
+bindsym $mod+shift+C move container to output DVI-I-1
+bindsym $mod+shift+V move container to output VGA-0
 
 # for moving specific workspaces to specific screens see: workspaces
 
@@ -229,7 +240,7 @@ bindsym $mod+Shift+Escape restart
 bindsym $mod+Shift+Tab reload
 
 # exit i3 (logs you out of your X session)
-# bindsym $mod+Shift+L exit
+bindsym $mod+Control+Escape exit
 
 
 ###### i3 SETTINGS ######
@@ -251,4 +262,3 @@ bar {
     status_command i3status
     tray_output primary
 }
-
