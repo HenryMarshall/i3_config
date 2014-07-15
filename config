@@ -37,7 +37,8 @@ bindsym $mod+Shift+BackSpace exec terminator
 bindsym $mod+Escape exec ksysguard
 
 # launch mapper
-bindsym $mod+F2 exec terminator -name 'foo'
+bindsym $mod+F2 exec --no-startup-id terminator -T "Mapper" --command="python ~/.i3/bin/i3_mapper.py"
+for_window [instance="terminator" title="Mapper"] floating enable
 
 ###### CLIENT FOCUS ######
 

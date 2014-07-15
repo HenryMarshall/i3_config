@@ -40,3 +40,5 @@ def walk_tree(node, depth):
 # find active workspace tree
 workspace_tree = i3.filter(name=find_active_workspace()['name'])
 walk_tree(workspace_tree[0], 0)
+
+raw_input()
