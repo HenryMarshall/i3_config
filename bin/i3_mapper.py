@@ -1,4 +1,6 @@
 #!/usr/bin/python2.7
+# Port of perl script: https://github.com/sciurus/i3tree
+
 import i3
 
 # save focused workspace

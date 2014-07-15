@@ -36,6 +36,8 @@ bindsym $mod+Shift+BackSpace exec terminator
 # launch ksysguard
 bindsym $mod+Escape exec ksysguard
 
+# launch mapper
+bindsym $mod+F2 exec terminator -name 'foo'
 
 ###### CLIENT FOCUS ######
 
@@ -120,10 +122,10 @@ bindsym $mod+F3 move scratchpad
 bindsym $mod+F4 scratchpad show
 
 # Retrieve terminator
-bindsym $mod+F2 [instance="scratch_term"] scratchpad show
+# bindsym $mod+F2 [instance="scratch_term"] scratchpad show
 
 # Make a new terminator with instance "scratch_term" because you closed it
-bindsym $mod+Shift+F2 exec terminator -name scratch_term
+# bindsym $mod+Shift+F2 exec terminator -name scratch_term
 
 
 
@@ -157,8 +159,8 @@ bindsym $mod+shift+V move container to output xinerama-3
 ###### WORKSPACES ######
 
 # focus adjacent workspace on screen
-bindsym $mod+q workspace prev_on_output
-bindsym $mod+p workspace next_on_output
+bindsym $mod+Shift+Tab workspace prev_on_output
+bindsym $mod+Tab workspace next_on_output
 
 # flop workspaces vertically between screens
 bindsym $mod+F5 exec /home/henry/.i3/bin/switch.py
@@ -229,7 +231,7 @@ bindsym $mod+Shift+slash move container to workspace a:mail
 bindsym $mod+Shift+Escape restart
 
 # reload the configuration file
-bindsym $mod+Shift+Tab reload
+# bindsym $mod+Shift+Tab reload
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Control+Escape exit
