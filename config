@@ -25,9 +25,7 @@ exec terminator -name scratch_term; [instance="scratch_term"] move scratchpad
 bindsym $mod+Shift+Delete kill
 
 # start k4-dmenu-desktop (a better program launcher)
-# bindsym $mod+BackSpace exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -l 20"
-# old and busted dmenu
-bindsym $mod+BackSpace exec --no-startup-id dmenu_run
+bindsym $mod+BackSpace exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -l 20"
 
 # launch (work) firefox
 bindsym $mod+Return exec firefox
