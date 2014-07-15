@@ -17,7 +17,7 @@ exec --no-startup-id xsetroot -solid "#333333"
 exec --no-startup-id nm-applet
 
 # create a terminal named scratchKonsole and send to the scratchpad
-exec konsole -name scratchKonsole; [instance="scratchKonsole"] move scratchpad
+exec terminator -name scratch_term; [instance="scratch_term"] move scratchpad
 
 ###### LAUNCH/KILL CLIENTS ######
 
@@ -123,11 +123,11 @@ bindsym $mod+F3 move scratchpad
 # Retrieve next scratchpad window
 bindsym $mod+F4 scratchpad show
 
-# Retrieve konsole
-# bindsym $mod+F5 [instance="scratchKonsole"] scratchpad show
+# Retrieve terminator
+bindsym $mod+F2 [instance="scratch_term"] scratchpad show
 
-# Make a new konsole with instance "scratchKonsole" because you closed it like an idiot
-# bindsym $mod+Shift+F5 exec konsole -name scratchKonsole
+# Make a new terminator with instance "scratch_term" because you closed it
+bindsym $mod+Shift+F2 exec terminator -name scratch_term
 
 
 
