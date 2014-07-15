@@ -60,16 +60,14 @@ bindsym $mod+Shift+r move up
 bindsym $mod+Shift+s move down
 bindsym $mod+Shift+t move right
 
-# split in horizontal orientation
+# change container layout (horizontal, vertical stacked, tabbed, default)
 bindsym $mod+shift+Q split h
-
-# split in vertical orientation
 bindsym $mod+shift+W split v
-
-# change container layout (stacked, tabbed, default)
 bindsym $mod+shift+F layout stacking
 bindsym $mod+shift+P layout tabbed
 bindsym $mod+shift+G layout default
+
+workspace_layout tabbed
 
 
 ###### CLIENT MANIPULATION ######
