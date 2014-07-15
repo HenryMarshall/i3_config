@@ -1,15 +1,27 @@
 #!/usr/bin/python2.7
-
+import time
 import i3
 outputs = i3.get_outputs()
 
-# set current workspace to output 0
-i3.workspace(outputs[0]['current_workspace'])
+# TODO: replace sleep kludge with some form of waiting
 
-# ..and move it to the other output.
-# outputs wrap, so the right of the right is left ;)
-i3.command('move', 'workspace to output right')
+# save focused workspace
+def find_active_workspace():
+    workspaces = i3.get_workspaces()
+    for workspace in workspaces:
+        if workspace['focused'] == True:
+            return workspace['name']
+    else:
+        return False
+active_workspace = find_active_workspace()
 
-# rinse and repeat
-i3.workspace(outputs[1]['current_workspace'])
-i3.command('move', 'workspace to output right')
+# move everything
+for output in range(0, len(outputs)):
+    i3.workspace(outputs[output]['current_workspace'])
+    i3.command('move', 'workspace to output up')
+    time.sleep(0.1)
+
+# restore focus to previously focused
+time.sleep(0.1)
+if active_workspace:
+    i3.command("workspace", active_workspace)

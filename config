@@ -32,8 +32,8 @@ bindsym $mod+BackSpace exec --no-startup-id dmenu_run
 # launch (work) firefox
 bindsym $mod+Return exec firefox
 
-# launch konsole
-bindsym $mod+Shift+BackSpace exec i3-sensible-terminal
+# launch terminal
+bindsym $mod+Shift+BackSpace exec terminator
 
 # launch ksysguard
 bindsym $mod+Escape exec ksysguard
@@ -164,9 +164,8 @@ bindsym $mod+shift+V move container to output xinerama-3
 bindsym $mod+q workspace prev_on_output
 bindsym $mod+p workspace next_on_output
 
-# flop workspaces horizontally between screens
-# doesn't work atm; will effort when i move to quad head
-# bindsym $mod+F5 exec /home/henry/.i3/switch.py
+# flop workspaces vertically between screens
+bindsym $mod+F5 exec /home/henry/.i3/bin/switch.py
 
 # switch to workspace
 bindsym $mod+1 workspace 1
