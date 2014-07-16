@@ -132,27 +132,30 @@ bindsym $mod+F4 scratchpad show
 
 ###### SCREENS ######
 
+# 20140712 - quad head
+
 # must use xinerama for unknown reasons. my nvidia drivers 331.20 should support
 # randr, but benefits are minimal as this machine will never hot-swap displays
 force_xinerama yes
 
-# 20140712 - quad head
-#   DVI-I-2: xinerama-0
-#   DVI-I-3: xinerama-1
-#   DVI-I-1: xinerama-2
-#   VGA-0:   xinerama-3
+# stored in variables to ease switching to randr
+# displays are DVI-I-2; DVI-I-3; DVI-I-1; VGA-0 respectively
+set $screen0 xinerama-0
+set $screen1 xinerama-1
+set $screen2 xinerama-2
+set $screen3 xinerama-3
 
 # move WORKSPACES to screens
-bindsym $mod+z move workspace to output xinerama-0
-bindsym $mod+x move workspace to output xinerama-1
-bindsym $mod+c move workspace to output xinerama-2
-bindsym $mod+v move workspace to output xinerama-3
+bindsym $mod+z move workspace to output $screen0
+bindsym $mod+x move workspace to output $screen1
+bindsym $mod+c move workspace to output $screen2
+bindsym $mod+v move workspace to output $screen3
 
 # move CLIENTS to screens
-bindsym $mod+shift+Z move container to output xinerama-0
-bindsym $mod+shift+X move container to output xinerama-1
-bindsym $mod+shift+C move container to output xinerama-2
-bindsym $mod+shift+V move container to output xinerama-3
+bindsym $mod+shift+Z move container to output xinerama$screen
+bindsym $mod+shift+X move container to output $screen1
+bindsym $mod+shift+C move container to output $screen2
+bindsym $mod+shift+V move container to output $screen3
 
 # for moving specific workspaces to specific screens see: workspaces
 
@@ -162,9 +165,6 @@ bindsym $mod+shift+V move container to output xinerama-3
 # focus adjacent workspace on screen
 bindsym $mod+Shift+Tab workspace prev_on_output
 bindsym $mod+Tab workspace next_on_output
-
-# flop workspaces vertically between screens
-bindsym $mod+F5 exec /home/henry/.i3/bin/switch.py
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -177,7 +177,6 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
-bindsym $mod+h workspace w:chr; workspace w:ff; workspace w:sub; workspace w:ref
 bindsym $mod+n workspace w:chr
 bindsym $mod+e workspace w:ff
 bindsym $mod+i workspace w:sub
@@ -191,14 +190,6 @@ bindsym $mod+m workspace a:music
 bindsym $mod+comma workspace a:file
 bindsym $mod+period workspace a:dl
 bindsym $mod+slash workspace a:mail
-
-# move workspace to current output; switch to it
-# current seems to be evaluated at the beginning of the line
-# bindsym $mod+Shift+K workspace a:vlc; move workspace to output current
-# bindsym $mod+Shift+M workspace a:music; move workspace to output current
-# bindsym $mod+Shift+less workspace a:text; move workspace to output current
-# bindsym $mod+Shift+greater workspace a:torr; move workspace to output current
-# bindsym $mod+Shift+question workspace a:mail; move workspace to output current
 
 # move focused container to workspace
 bindsym $mod+Shift+exclam move container to workspace 1
@@ -224,6 +215,14 @@ bindsym $mod+Shift+m move container to workspace a:music
 bindsym $mod+Shift+comma move container to workspace a:file
 bindsym $mod+Shift+period move container to workspace a:dl
 bindsym $mod+Shift+slash move container to workspace a:mail
+
+# put work workspaces on appropriate outputs
+bindsym $mod+h workspace w:ff; move workspace to output $screen1; workspace w:chr; move workspace to output $screen2; workspace w:ref; move workspace to $screen3; workspace w:sub; move workspace to output $screen0
+# flipped work outputs
+bindsym $mod+Shift+h workspace w:ff; move workspace to output $screen3; workspace w:chr; move workspace to output $screen0; workspace w:ref; move workspace to $screen1; workspace w:sub; move workspace to output $screen2
+
+# flop workspaces vertically between screens
+bindsym $mod+F5 exec /home/henry/.i3/bin/switch.py
 
 
 ###### i3 COMMANDS ######
@@ -252,7 +251,19 @@ client.urgent           #C99700 #FFBF00 #ffffff #FFBF00
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+
+
 bar {
+    tray_output $screen0
+    output $screen0
+    output $screen1
+    position top
+    status_command i3status
+}
+
+bar {
+    output $screen2
+    output $screen3
     position bottom
     status_command i3status
 }
