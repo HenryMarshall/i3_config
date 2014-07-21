@@ -178,8 +178,8 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 bindsym $mod+n workspace w:chr
-bindsym $mod+e workspace w:ff
-bindsym $mod+i workspace w:sub
+bindsym $mod+e workspace w:sub
+bindsym $mod+i workspace w:ff
 bindsym $mod+o workspace w:ref
 bindsym $mod+l workspace p:fun
 bindsym $mod+u workspace p:bet
@@ -203,8 +203,8 @@ bindsym $mod+Shift+asterisk move container to workspace 8
 bindsym $mod+Shift+parenleft move container to workspace 9
 bindsym $mod+Shift+parenright move container to workspace 10
 bindsym $mod+Shift+N move container to workspace w:chr
-bindsym $mod+Shift+E move container to workspace w:ff
-bindsym $mod+Shift+I move container to workspace w:sub
+bindsym $mod+Shift+E move container to workspace w:sub
+bindsym $mod+Shift+I move container to workspace w:ff
 bindsym $mod+Shift+O move container to workspace w:ref
 bindsym $mod+Shift+L move container to workspace p:fun
 bindsym $mod+Shift+U move container to workspace p:bet
