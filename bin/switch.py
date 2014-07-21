@@ -14,8 +14,11 @@ def find_active_workspace():
         return False
 active_workspace = find_active_workspace()
 
+# 
+
 # move everything
 outputs = i3.get_outputs()
+outputs_to_switch = range(0,4)
 for output in range(0, 4):
     i3.workspace(outputs[output]['current_workspace'])
     i3.command('move', 'workspace to output up')
