@@ -16,3 +16,4 @@ The configuration files for my quad-head i3 setup.
 **IDEAS**
 
 * run script to hide cursor on workspace focus shift
+* command to feed spec results to i3bar
