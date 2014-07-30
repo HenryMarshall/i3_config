@@ -11,3 +11,8 @@ The configuration files for my quad-head i3 setup.
 * lock/suspend/shutdown
 * conky
 * customize i3bar
+
+
+**IDEAS**
+
+* run script to hide cursor on workspace focus shift
