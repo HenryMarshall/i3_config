@@ -9,8 +9,8 @@ class Flipper
 
   def flip single_column=false
     focused_workspace = @workspaces.find { |workspace| workspace.focused }
-    single_column ? (xinerama_number(workspace) % 2) : false
-    queue = build_move_queue(@workspaces, single_column)
+    column = single_column ? (xinerama_number(focused_workspace) % 2) : nil
+    queue = build_move_queue(@workspaces, column)
     # We focus where the originally focused workspace /will/ be (sync problems)
     queue << "focus #{target_output(focused_workspace)}"
 
@@ -19,16 +19,16 @@ class Flipper
 
   private
 
-  def build_move_queue workspaces, single_column
+  def build_move_queue workspaces, column
     queue = []
     workspaces.each do |workspace|
-      add_to_queue(workspace, queue) if flip_this?(workspace, single_column)
+      add_to_queue(workspace, queue) if flip_this?(workspace, column)
     end
     queue
   end
 
-  def flip_this? workspace, single_column
-    xinerama_number(workspace) % 2 == single_column or not single_column
+  def flip_this? workspace, column
+    xinerama_number(workspace) % 2 == column or not column
   end
 
   def add_to_queue workspace, queue
@@ -56,5 +56,7 @@ class Flipper
 
 end
 
+
 f = Flipper.new
-f.flip
+single_column = ARGV[0] == "--single-column"
+f.flip(single_column)
