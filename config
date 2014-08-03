@@ -35,14 +35,14 @@ mode "launcher" {
   bindsym i exec subl; mode "default"
   bindsym o exec google-chrome; mode "default"
   bindsym k exec vlc; mode "default"
-  bindsym , exec krusader; mode "default"
-  bindsym . exec ktorrent; mode "default"
+  bindsym comma exec krusader; mode "default"
+  bindsym period exec ktorrent; mode "default"
 
   # i3 commands
-  bindsym Shift+Q exec quit
+  bindsym Shift+Q exec quit; mode "default"
   bindsym w exec restart
-  bindsym f exec reload
-  bindsym p exec i3lock
+  bindsym f exec reload; mode "default"
+  bindsym p exec /home/henry/.i3/scripts/fuzzy_lock.sh; mode "default"
 
   # Return to default mode without selecting anything
   bindsym Return mode "default"
@@ -64,7 +64,7 @@ bindsym $mod+s focus down
 bindsym $mod+t focus right
 
 # focus the parent container
-bindsym $mod+Shift+P focus parent
+bindsym $mod+p focus parent
 
 # focus the child container
 # bindcode $mod+b focus child
