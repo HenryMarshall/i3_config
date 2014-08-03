@@ -27,14 +27,29 @@ bindsym $mod+Shift+Delete kill
 # start k4-dmenu-desktop (a better program launcher)
 bindsym $mod+BackSpace exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -l 20"
 
-# launch (work) firefox
-bindsym $mod+Return exec firefox
+mode "launcher" {
+  # launch commonly used apps
+  bindsym y exec qalculate; mode "default"
+  bindsym n exec terminator; mode "default"
+  bindsym e exec firefox; mode "default"
+  bindsym i exec subl; mode "default"
+  bindsym o exec google-chrome; mode "default"
+  bindsym k exec vlc; mode "default"
+  bindsym , exec krusader; mode "default"
+  bindsym . exec ktorrent; mode "default"
 
-# launch terminal
-bindsym $mod+Shift+BackSpace exec terminator
+  # i3 commands
+  bindsym Shift+Q exec quit
+  bindsym w exec restart
+  bindsym f exec reload
+  bindsym p exec i3lock
 
-# launch task-manager
-bindsym $mod+Escape exec xfce4-taskmanager
+  # Return to default mode without selecting anything
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+bindsym $mod+Shift+BackSpace mode "launcher"
 
 # launch mapper
 bindsym $mod+F2 exec --no-startup-id terminator -T "Mapper" --command="python ~/.i3/bin/i3_mapper.py"
