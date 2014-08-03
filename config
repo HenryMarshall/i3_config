@@ -49,7 +49,7 @@ bindsym $mod+s focus down
 bindsym $mod+t focus right
 
 # focus the parent container
-bindsym $mod+d focus parent
+bindsym $mod+Shift+P focus parent
 
 # focus the child container
 # bindcode $mod+b focus child
@@ -91,20 +91,11 @@ bindsym $mod+g fullscreen
 mode "resize" {
     # These bindings trigger as soon as you enter the resize mode
 
-    # Pressing left will shrink the window’s width.
-    # Pressing right will grow the window’s width.
-    # Pressing up will shrink the window’s height.
-    # Pressing down will grow the window’s height.
+    # Respectively: shrink h; shrink v; grow v; grow h
     bindsym a resize shrink width 3 px or 3 ppt
     bindsym r resize shrink height 3 px or 3 ppt
     bindsym s resize grow height 3 px or 3 ppt
     bindsym t resize grow width 3 px or 3 ppt
-
-    # same bindings, but for the arrow keys
-    # bindsym 113 resize shrink width 10 px or 10 ppt
-    # bindsym 116 resize grow height 10 px or 10 ppt
-    # bindsym 111 resize shrink height 10 px or 10 ppt
-    # bindsym 114 resize grow width 10 px or 10 ppt
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -152,7 +143,7 @@ bindsym $mod+c move workspace to output $screen2
 bindsym $mod+v move workspace to output $screen3
 
 # move CLIENTS to screens
-bindsym $mod+shift+Z move container to output xinerama$screen
+bindsym $mod+shift+Z move container to output $screen0
 bindsym $mod+shift+X move container to output $screen1
 bindsym $mod+shift+C move container to output $screen2
 bindsym $mod+shift+V move container to output $screen3
@@ -177,9 +168,9 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
-bindsym $mod+n workspace w:chr
-bindsym $mod+e workspace w:sub
-bindsym $mod+i workspace w:ff
+bindsym $mod+n workspace w:ter
+bindsym $mod+e workspace w:ff
+bindsym $mod+i workspace w:sub
 bindsym $mod+o workspace w:ref
 bindsym $mod+l workspace p:fun
 bindsym $mod+u workspace p:bet
@@ -202,9 +193,9 @@ bindsym $mod+Shift+ampersand move container to workspace 7
 bindsym $mod+Shift+asterisk move container to workspace 8
 bindsym $mod+Shift+parenleft move container to workspace 9
 bindsym $mod+Shift+parenright move container to workspace 10
-bindsym $mod+Shift+N move container to workspace w:chr
-bindsym $mod+Shift+E move container to workspace w:sub
-bindsym $mod+Shift+I move container to workspace w:ff
+bindsym $mod+Shift+N move container to workspace w:ter
+bindsym $mod+Shift+E move container to workspace w:ff
+bindsym $mod+Shift+I move container to workspace w:sub
 bindsym $mod+Shift+O move container to workspace w:ref
 bindsym $mod+Shift+L move container to workspace p:fun
 bindsym $mod+Shift+U move container to workspace p:bet
@@ -217,13 +208,14 @@ bindsym $mod+Shift+period move container to workspace a:dl
 bindsym $mod+Shift+slash move container to workspace a:mail
 
 # put work workspaces on appropriate outputs
-bindsym $mod+h workspace w:ff; move workspace to output $screen1; workspace w:chr; move workspace to output $screen2; workspace w:ref; move workspace to $screen3; workspace w:sub; move workspace to output $screen0
+bindsym $mod+F5 workspace w:ff; move workspace to output $screen2; workspace w:ter; move workspace to output $screen3; workspace w:ter; move workspace to output $screen0; workspace w:sub; move workspace to output $screen1
+
 # flipped work outputs
-bindsym $mod+Shift+h workspace w:ff; move workspace to output $screen3; workspace w:chr; move workspace to output $screen0; workspace w:ref; move workspace to $screen1; workspace w:sub; move workspace to output $screen2
+bindsym $mod+Shift+F5 workspace w:ff; move workspace to output $screen0; workspace w:ter; move workspace to output $screen1; workspace w:ter; move workspace to output $screen3; workspace w:sub; move workspace to output $screen2
 
 # flop workspaces vertically between screens
-bindsym $mod+F5 exec /home/henry/.i3/scripts/flip_screens.rb
-bindsym $mod+Shift+F5 exec /home/henry/.i3/scripts/flip_screens.rb --single-column
+bindsym $mod+d exec /home/henry/.i3/scripts/flip_screens.rb
+bindsym $mod+Shift+D exec /home/henry/.i3/scripts/flip_screens.rb --single-column
 
 
 ###### i3 COMMANDS ######
