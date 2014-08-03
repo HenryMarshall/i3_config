@@ -33,8 +33,8 @@ bindsym $mod+Return exec firefox
 # launch terminal
 bindsym $mod+Shift+BackSpace exec terminator
 
-# launch ksysguard
-bindsym $mod+Escape exec ksysguard
+# launch task-manager
+bindsym $mod+Escape exec xfce4-taskmanager
 
 # launch mapper
 bindsym $mod+F2 exec --no-startup-id terminator -T "Mapper" --command="python ~/.i3/bin/i3_mapper.py"
@@ -222,7 +222,8 @@ bindsym $mod+h workspace w:ff; move workspace to output $screen1; workspace w:ch
 bindsym $mod+Shift+h workspace w:ff; move workspace to output $screen3; workspace w:chr; move workspace to output $screen0; workspace w:ref; move workspace to $screen1; workspace w:sub; move workspace to output $screen2
 
 # flop workspaces vertically between screens
-bindsym $mod+F5 exec /home/henry/.i3/bin/switch.py
+bindsym $mod+F5 exec /home/henry/.i3/scripts/flip_screens.rb
+bindsym $mod+Shift+F5 exec /home/henry/.i3/scripts/flip_screens.rb --single-column
 
 
 ###### i3 COMMANDS ######
