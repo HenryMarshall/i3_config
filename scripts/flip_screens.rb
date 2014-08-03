@@ -30,7 +30,7 @@ class Flipper
   def build_move_queue workspaces, column
     queue = []
     workspaces.each do |workspace|
-      add_to_queue(workspace, queue) if flip_this?(workspace, column)
+      queue = add_to_queue(workspace, queue) if flip_this?(workspace, column)
     end
     queue
   end
