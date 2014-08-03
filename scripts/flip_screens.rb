@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'gir_ffi'
 
 class Flipper
@@ -11,10 +13,16 @@ class Flipper
     focused_workspace = @workspaces.find { |workspace| workspace.focused }
     column = single_column ? (xinerama_number(focused_workspace) % 2) : nil
     queue = build_move_queue(@workspaces, column)
-    # We focus where the originally focused workspace /will/ be (sync problems)
-    queue << "focus #{target_output(focused_workspace)}"
 
+    # Restore focus to originally focused workspace
+    queue << "focus output #{target_output(focused_workspace)}"
     @i3.command queue.join('; ')
+
+    # Sync problems mean that previous restoration sometimes doesn't work.
+    # I retain the original queued method as it eliminates cursor jitter when
+    # it /does/ work.
+    sleep 0.2
+    @i3.command "workspace #{focused_workspace.name}"
   end
 
   private
@@ -32,8 +40,7 @@ class Flipper
   end
 
   def add_to_queue workspace, queue
-    move_command = "workspace #{workspace.name};
-                    move workspace to #{target_output(workspace)}"
+    move_command = "workspace #{workspace.name}; move workspace to #{target_output(workspace)}"
 
     # If workspace was visible, put it on the top of the move queue so it
     # will be visible after the move. Otherwise put it on the bottom.
