@@ -223,10 +223,10 @@ bindsym $mod+Shift+period move container to workspace a:dl
 bindsym $mod+Shift+slash move container to workspace a:mail
 
 # put work workspaces on appropriate outputs
-bindsym $mod+F5 workspace w:ff; move workspace to output $screen2; workspace w:ter; move workspace to output $screen3; workspace w:ter; move workspace to output $screen0; workspace w:sub; move workspace to output $screen1
+bindsym $mod+F5 workspace w:ff; move workspace to output $screen2; workspace w:ref; move workspace to output $screen3; workspace w:ter; move workspace to output $screen0; workspace w:sub; move workspace to output $screen1
 
 # flipped work outputs
-bindsym $mod+Shift+F5 workspace w:ff; move workspace to output $screen0; workspace w:ter; move workspace to output $screen1; workspace w:ter; move workspace to output $screen3; workspace w:sub; move workspace to output $screen2
+bindsym $mod+Shift+F5 workspace w:ff; move workspace to output $screen0; workspace w:ref; move workspace to output $screen1; workspace w:ter; move workspace to output $screen2; workspace w:sub; move workspace to output $screen3
 
 # flop workspaces vertically between screens
 bindsym $mod+d exec /home/henry/.i3/scripts/flip_screens.rb
