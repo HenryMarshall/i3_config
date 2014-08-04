@@ -21,7 +21,7 @@ class Flipper
     # Sync problems mean that previous restoration sometimes doesn't work.
     # I retain the original queued method as it eliminates cursor jitter when
     # it /does/ work.
-    sleep 0.2
+    sleep 0.3
     @i3.command "workspace #{focused_workspace.name}"
   end
 
