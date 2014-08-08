@@ -247,12 +247,23 @@ bindsym $mod+Control+Escape exit
 
 ###### i3 SETTINGS ######
 
-# Border colors - dark red, dark blue, grey, orange respectively
-# class                 border  backgr. text    indicator
-client.focused          #8F000E #A80011 #ffffff #A80011
-client.focused_inactive #4c7899 #285577 #ffffff #285577
-client.unfocused        #333333 #222222 #888888 #222222
-client.urgent           #C99700 #FFBF00 #ffffff #FFBF00
+set $red #8f000e
+set $drd #580e16
+set $org #955f09
+set $dog #57390a
+set $blu #2f4b60
+set $dbl #283a48
+set $blk #242424
+set $dbk #191919
+set $gry #2d2d2d
+set $wht #F2F0EC
+
+# class                   border  background  text  indicator
+client.focused            $red    $red        $wht  $drd
+client.focused_inactive   $blu    $blu        $wht  $blu
+client.unfocused          $gry    $gry        $wht  $gry
+client.urgent             $org    $org        $gry  $org
+
 
 
 ###### i3bar settings ######
@@ -267,6 +278,19 @@ bar {
     output $screen1
     position top
     status_command i3status
+
+    colors {
+      background          $gry
+      statusline          $wht
+      separator           $wht
+      
+      # class             border  background  text
+      focused_workspace   $drd    $red        $wht
+      active_workspace    $dbl    $blu        $wht
+      inactive_workspace  $dbk    $blk        $wht
+      urgent_workspace    $dog    $org        $wht
+    }
+    
 }
 
 bar {
@@ -274,4 +298,16 @@ bar {
     output $screen3
     position bottom
     status_command i3status
+
+    colors {
+      background          $gry
+      statusline          $wht
+      separator           $wht
+      
+      # class             border  background  text
+      focused_workspace   $drd    $red        $wht
+      active_workspace    $dbl    $blu        $wht
+      inactive_workspace  $dbk    $blk        $wht
+      urgent_workspace    $dog    $org        $wht
+    }
 }
